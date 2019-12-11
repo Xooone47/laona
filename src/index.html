@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
     <head>
-        <title>FExpy</title>
+        <title>NaRongkun</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <script>
+                (function(){
+                  var redirect = sessionStorage.redirect;
+                  delete sessionStorage.redirect;
+                  if (redirect && redirect != location.href) {
+                    history.replaceState(null, null, redirect);
+                  }
+                })();
+        </script>
     </head>
     <body>
         <div id="app"></div>

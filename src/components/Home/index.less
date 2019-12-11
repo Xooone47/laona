@@ -1,0 +1,127 @@
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .text {
+        font-size: 2.5em;
+        color: #717070;
+    }
+}
+
+.tabs {
+    :global {
+        .ant-tabs-bar {
+            display: flex;
+            justify-content: center;
+
+            .ant-tabs-tab {
+                display: inline-flex;
+                justify-content: center;
+                color: #717070;
+                font-size: 18px;
+
+                &:hover {
+                    color: #717070;
+                }
+            }
+
+            .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+                background-color: #717070;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .tabs {
+        :global {
+            .ant-tabs-bar {
+                .ant-tabs-nav-container {
+                    width: 100%;
+
+                    .ant-tabs-nav {
+                        width: 100%;
+
+                        .ant-tabs-tab {
+                            margin-right: 0;
+                            padding: 10px 7px;
+                            width: 20%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.tab-pane {
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.content-layout {
+    padding: 30px;
+    font-size: 16px;
+}
+
+.words {
+    max-width: 650px;
+}
+
+.contact {
+    .label {
+        display: inline-block;
+        width: 100px;
+    }
+}
+
+.work {
+    .header {
+        display: flex;
+        justify-content: center;
+        font-weight: bolder;
+    }
+
+    :global {
+        .ant-collapse-header {
+            margin: 30px 0 30px 0 !important;
+            padding: 0 40px !important;
+
+            .ant-collapse-arrow {
+                visibility: hidden;
+            }
+        }
+
+        .ant-collapse-content-box {
+            padding: 0 16px !important;
+        }
+
+        .ant-collapse-item  {
+            border: none !important;
+        }
+    }
+
+    .collapse {
+        width: 300px;
+    }
+}
+
+.sub-categories {
+    .item {
+        display: flex;
+        justify-content: center;
+        margin: 25px 0;
+
+        &:first-child {
+            margin-top: 5px;
+        }
+
+        &:last-child {
+            margin-bottom: 5px;
+        }
+    }
+}

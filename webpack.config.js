@@ -72,7 +72,17 @@ module.exports = (env, argv) => {
                                     localIdentName: '[path][name]__[local]--[hash:base64:5]',
                                 }
                             },
-                            'less-loader', 'postcss-loader']
+                            {
+                                loader: 'less-loader',
+                                options: {
+                                    // modifyVars: darkTheme,
+                                    modifyVars: {
+                                        '@primary-color': 'black'
+                                    }
+                                },
+                            },
+                            'postcss-loader'
+                        ]
                     })
                 },
                 {
@@ -94,7 +104,7 @@ module.exports = (env, argv) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: 'FExpy',
+                title: 'NaRongkun',
                 template: './src/index.html',
                 filename: mode === 'DEV' ? 'index.html' : '../index.html'
             }),
