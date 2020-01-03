@@ -1,68 +1,66 @@
+import {useCallback} from 'react';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import {Collapse, Divider} from 'antd';
+import {partial} from 'lodash';
+import {CATEGORIES} from '@/utils';
+import Detail from './Detail';
 import styles from './index.less';
 
 const {Panel} = Collapse;
 
-const text = 'sometexts';
-
-const CATEGORIES = [
-    {
-        title: 'Painting',
-        children: [
-            'Anonymous diary2018',
-            'The surge of time2017',
-            'Do not look back2017',
-            'Distance2017',
-            'Pickled cucumbers2017',
-            'Trap2017',
-            'Road2016',
-            'Life drawing',
-        ],
-    },
-    {
-        title: 'Sketch',
-        children: [
-            'Dream',
-            'He doesn\'t know',
-            'Draft',
-        ],
-    },
-    {
-        title: 'Others',
-        children: [
-            'Brainman',
-            'Imprint',
-        ],
-    },
-];
-
 const Header = ({text}) => {
     return (
-        // <div className={styles.header}>{text}</div>
         <Divider>{text}</Divider>
     );
 };
 
-const SubCategories = ({list}) => {
+const SubCategoriesIn = ({list, history, location, match}) => {
+    const {pathname} = location;
+    const {params: {first}} = match;
+
+    const handleClick = useCallback(
+        value => {
+            const target = `/work/${first}/${value}`;
+            history.push(target);
+
+        },
+        [history, pathname]
+    );
+
+    const categories = list.map(item => item.name);
+
     return (
         <div className={styles['sub-categories']}>
-            {list.map(item => (
-                <div className={styles.item}>{item}</div>
+            {categories.map((item, index) => (
+                <div className={styles.item} onClick={partial(handleClick, index)} key={item}>
+                    {item}
+                </div>
             ))}
         </div>
     );
 };
 
-const Work = () => {
+const SubCategories = withRouter(SubCategoriesIn);
+
+const MenuIn = ({history, match}) => {
+    const {params: {first}} = match;
+
+    const handleChange = useCallback(
+        key => {
+            history.push(`/work/${key}`);
+        },
+        []
+    );
+
     return (
         <div className={styles.work}>
             <Collapse
                 accordion
                 bordered={false}
-                defaultActiveKey={['1']}
+                defaultActiveKey={[first || '1']}
                 className={styles.collapse}
-                // expandIconPosition="right"
                 expandIcon={null}
+                onChange={handleChange}
             >
                 {
                     CATEGORIES.map(item => (
@@ -73,6 +71,17 @@ const Work = () => {
                 }
             </Collapse>
         </div>
+    )
+}
+
+const Menu = withRouter(MenuIn);
+
+const Work = () => {
+    return (
+        <Switch>
+            <Route exact path="/work/:first?" component={Menu} />
+            <Route exact path="/work/:first/:second" component={Detail} />
+        </Switch>
     );
 };
 

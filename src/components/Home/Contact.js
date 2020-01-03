@@ -1,6 +1,6 @@
 import styles from './index.less';
 
-const Label = ({children}) => <div className={styles.label}>{children}</div>;
+const Label = ({children}) => <span className={styles.label}>{children}</span>;
 
 const Contact = () => {
     return (
