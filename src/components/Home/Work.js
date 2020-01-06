@@ -1,5 +1,5 @@
 import {useCallback} from 'react';
-import {Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {Collapse, Divider} from 'antd';
 import {partial} from 'lodash';
 import {CATEGORIES} from '@/utils';
@@ -71,8 +71,8 @@ const MenuIn = ({history, match}) => {
                 }
             </Collapse>
         </div>
-    )
-}
+    );
+};
 
 const Menu = withRouter(MenuIn);
 
@@ -81,6 +81,7 @@ const Work = () => {
         <Switch>
             <Route exact path="/work/:first?" component={Menu} />
             <Route exact path="/work/:first/:second" component={Detail} />
+            <Redirect exact from="/" to="/work" />
         </Switch>
     );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styles from './index.less';
 
 const Words = () => {
@@ -9,7 +10,7 @@ const Words = () => {
             <p>The true satisfaction my always elude me. Sometimes, the more I work on it, the less satisfied I am. Sometimes, I find in my work what other people have done, and I do not want to repeat, not to replicate. In the Information Age, repetition and replication seem to be unavoidable. Under such circumstances, we need to rediscover and revive painting.</p>
             <p>In my opinion, art is not aimed at innovation; and even if your theme remains unchanged, you can work out something creative.</p>
         </div>
-    )
+    );
 };
 
 const News = () => {
