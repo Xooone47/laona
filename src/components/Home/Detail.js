@@ -2,7 +2,7 @@ import {useCallback} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Divider} from 'antd';
 import {CATEGORIES} from '@/utils';
-import {get} from 'lodash';
+import {get, isEmpty} from 'lodash';
 import styles from './Detail.less';
 
 const Item = ({name, url}) => {
@@ -37,7 +37,7 @@ const DetailIn = ({match, history}) => {
             <div className={styles.content}>
                 {(children || []).map(item => <Item {...item} key={item.url} />)}
 
-                {drafts && (
+                {!isEmpty(drafts) && (
                     <div className={styles.more}>
                         <Divider>More details</Divider>
                         {drafts.map(item => <Item {...item} key={item.url} />)}
