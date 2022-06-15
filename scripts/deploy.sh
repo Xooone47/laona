@@ -2,4 +2,4 @@ BASEDIR=$(dirname "$0")
 
 cd ${BASEDIR}/..
 
-cp -r ./dist/* ../narongkun
+cp -r ./dist/* ../narongkun.github.io

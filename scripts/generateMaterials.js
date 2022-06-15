@@ -3,7 +3,8 @@ const glob = require('glob').sync;
 const {get, last, isNaN, compact} = require('lodash');
 const fs = require('fs');
 
-const materials = path.join(__dirname, '..', 'src', 'works', '**', '*.{jpg,JPG,mp4}');
+// const materials = path.join(__dirname, '..', 'src', 'works', '**', '*.{jpg,JPG,mp4,png,PNG}');
+const materials = path.join(__dirname, '..', 'src', 'works', '**', '*.{jpg,JPG,png,PNG}');
 const outputPath = path.join(__dirname, '..', 'src', 'utils', 'materials.js');
 
 const files = glob(materials);
@@ -36,7 +37,7 @@ const getIsNameVaild = name => {
     }
 
     return true;
-}
+};
 
 const getDisplayName = file => {
     const name = file.split('.').slice(0, -1).join('.');
@@ -81,14 +82,14 @@ const dirs = filesPaths.reduce(
         return result;
     },
     []
-)
+);
 
 // console.dir(dirs, {depth: null})
 
 const importStatements = shortFiles.map((item, index) => `import url${index} from \'..${item}\';`).join('\n');
 
-const dirObject = `export const CATEGORIES =` + JSON.stringify(dirs);
-const filterdDir = dirObject.replace(/(\"-----|-----\")/g, "")
+const dirObject = 'export const CATEGORIES =' + JSON.stringify(dirs);
+const filterdDir = dirObject.replace(/(\"-----|-----\")/g, '');
 
 // console.log(filterdDir);
 
